@@ -132,6 +132,20 @@ def add_setting():
 
     return user_setting_schema.jsonify(new_setting)
 
+@app.route('/settings/<id>', methods=['PUT'])
+def update_settings(id):
+    setting = UserSettings.query.get(id)
+    new_bool_setting = request.json['bool_setting']
+    new_num_setting = request.json['num_setting']
+    new_word_setting  = request.json['word_setting']
+
+    setting.bool_setting = new_bool_setting
+    setting.num_setting = new_num_setting
+    setting.word_setting = new_word_setting
+
+    db.session.commit()
+    return user_setting_schema.jsonify(setting)
+
 @app.route('/users', methods=['POST'])
 def add_user():
     data = request.get_json(force=True)
