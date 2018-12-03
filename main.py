@@ -146,6 +146,14 @@ def update_settings(id):
     db.session.commit()
     return user_setting_schema.jsonify(setting)
 
+@app.route('/settings/<id>', methods=['DELETE'])
+def delete_settings(id):
+    setting = UserSettings.query.get(id)
+    db.session.delete(setting)
+    db.session.commit()
+
+    return user_setting_schema.jsonify(setting)
+
 @app.route('/users', methods=['POST'])
 def add_user():
     data = request.get_json(force=True)
