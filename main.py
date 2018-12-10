@@ -9,6 +9,7 @@ from flask_cors import CORS
 import queue
 import threading
 import time
+import importlib
 
 
 # def test_func3(string):
@@ -55,32 +56,32 @@ def get_connection():
 # def test_func():
 #     return '<h1>This is a test 1</h1>'
 #
-# def test_queue():
-#     global queue_1
-#     # queue_1=queue.Queue(maxsize=0)
-#     queue_1.put(1)
-#     queue_1.put(2)
-#     queue_1.put(3)
-#     print(queue_1.get())
-#     queue_1.task_done()
-#     print(queue_1.get())
-#     queue_1.task_done()
-#     print(queue_1.get())
-#     queue_1.task_done()
-#     return 'queue done'
+def test_queue():
+    global queue_1
+    # queue_1=queue.Queue(maxsize=0)
+    queue_1.put(1)
+    queue_1.put(2)
+    queue_1.put(3)
+    print(queue_1.get())
+    queue_1.task_done()
+    print(queue_1.get())
+    queue_1.task_done()
+    print(queue_1.get())
+    queue_1.task_done()
+    return 'queue done'
 #
-# def test_queue2():
-#     global queue_2
-#     queue_2.put(10)
-#     queue_2.put(20)
-#     queue_2.put(30)
-#     print(queue_2.get())
-#     queue_2.task_done()
-#     print(queue_2.get())
-#     queue_2.task_done()
-#     print(queue_2.get())
-#     queue_2.task_done()
-#
+def test_queue2():
+    global queue_2
+    queue_2.put(10)
+    queue_2.put(20)
+    queue_2.put(30)
+    print(queue_2.get())
+    queue_2.task_done()
+    print(queue_2.get())
+    queue_2.task_done()
+    print(queue_2.get())
+    queue_2.task_done()
+
 # # def set_up_queues(x, var):
 # #     if var==0:
 # #         global first_clip
@@ -167,12 +168,12 @@ def get_loop():
 
     return '<h1>LOOPING WORD: {} {}</h1>'.format("testing", data)
 
-# @app.route('/test')
-# def test_route():
-#     print('LOGGING IN TEST 1')
-#     test_queue()
-#     test_queue2()
-#     return test_func()
+@app.route('/test')
+def test_route():
+    print('LOGGING IN TEST 1')
+    test_queue()
+    test_queue2()
+    return test_func()
 #
 # @app.route('/test2')
 # def test_routeq():
