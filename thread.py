@@ -100,9 +100,7 @@
 # print ("Exiting Main Thread")
 
 
-import queue
-import threading
-import time
+
 
 # exitFlag = 0
 #
@@ -169,24 +167,41 @@ import time
 #    t.join()
 # print ("Exiting Main Thread")
 
-
-def do_stuff(q, delay):
-  while True:
-    print(q.get())
-    time.sleep(delay)
-    print("current thread: {}".format(threading.current_thread()))
-    q.task_done()
-
-q = queue.Queue(maxsize=0)
-num_threads = 99
-
-for i in range(num_threads):
-  worker = threading.Thread(target=do_stuff, args=(q, 1))
-  worker.setDaemon(True)
-  worker.start()
-
-for y in range (10):
-  for x in range(100):
-    q.put(x + y * 100)
-  q.join()
-  print("Batch " + str(y) + " Done")
+# import queue
+# import threading
+# import time
+#
+# def do_stuff(q, delay):
+#   while True:
+#     print(q.get())
+#     time.sleep(delay)
+#     print("current thread: {}".format(threading.current_thread()))
+#     q.task_done()
+#
+# q = queue.Queue(maxsize=0)
+# num_threads = 99
+#
+# for i in range(num_threads):
+#   worker = threading.Thread(target=do_stuff, args=(q, 1))
+#   worker.setDaemon(True)
+#   worker.start()
+#
+# for y in range (10):
+#   for x in range(100):
+#     q.put(x + y * 100)
+#   q.join()
+#   print("Batch " + str(y) + " Done")
+#
+#
+# max_size=10
+# master_variable=0
+# first_clip=0
+# queue_1=queue.Queue(maxsize=10)
+# queue_2=queue.Queue(maxsize=10)
+#
+# def set_up_queues(x, var):
+# if var==0:
+#     global first_clip
+#     first_clip=x
+# else:
+#     queue_1.put(x)
